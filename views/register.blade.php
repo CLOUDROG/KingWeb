@@ -4,10 +4,10 @@
 <div class="container_24 clearfix" id="registration">
     <h3>Register</h3>
     {{ Form::open(array('url' => 'user/register')) }}
-    <table style="font-size: 20px; line-height: 2em;" >
+    <table>
     
         @foreach($errors->get('fullname') as $message)
-        <tr><td colspan="3" class="error">{{ $message }}</td></tr>
+        <tr><td colspan="3" id="error">{{ $message }}</td></tr>
         @endforeach
     
         <tr><td >
@@ -17,7 +17,7 @@
         </td></tr>
     
         @foreach($errors->get('email') as $message)
-        <tr><td colspan="3" class="error_msg">{{ $message }}</td></tr>
+        <tr><td colspan="3" id="error">{{ $message }}</td></tr>
         @endforeach
         
         <tr><td>
@@ -27,7 +27,7 @@
         </td></tr>
     
         @foreach($errors->get('password') as $message)
-        <tr><td colspan="3" class="error_msg">{{ $message }}</td></tr>
+        <tr><td colspan="3" id="error">{{ $message }}</td></tr>
         @endforeach
     
         <tr><td>
