@@ -15,6 +15,26 @@
         </td><td>
         {{ Form::text('fullname') }}
         </td></tr>
+        
+        @foreach($errors->get('username') as $message)
+        <tr><td colspan="3" id="error">{{ $message }}</td></tr>
+        @endforeach
+    
+        <tr><td >
+        {{ Form::label('username', 'Tavs lietotājvārds') }}
+        </td><td>
+        {{ Form::text('username') }}
+        </td></tr>
+        
+        @foreach($errors->get('igname') as $message)
+        <tr><td colspan="3" id="error">{{ $message }}</td></tr>
+        @endforeach
+    
+        <tr><td >
+        {{ Form::label('igname', 'Tavs servera segvārds') }}
+        </td><td>
+        {{ Form::text('igname') }}
+        </td></tr>
     
         @foreach($errors->get('email') as $message)
         <tr><td colspan="3" id="error">{{ $message }}</td></tr>

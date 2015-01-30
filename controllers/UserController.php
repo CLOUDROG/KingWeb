@@ -7,26 +7,26 @@ class UserController extends BaseController {
     }
     
     public function postRegister(){
-    
         $data = Input::all();
         $rules = $rules = array(
             'fullname' => 'required',
+            'username' => 'required|unique:users,username|min:3',
+            'igname' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:5|confirmed',
-        );
+            'password' => 'required|min:8|confirmed');
         
         $validator = Validator::make($data, $rules);
         
-        if ($validator->passes())
-        {
+        if ($validator->passes()){
             $user = new User();
             
             $user->fullname = $data['fullname'];
+            $user->username = $data['username'];
+            $user->igname = $data['igname'];
             $user->email = $data['email'];
             $user->password = Hash::make($data['password']);
             
             $user->save();
-            
             Auth::login($user);
             
             return Redirect::to('user')->withMessage('Successfully registered!');
@@ -35,23 +35,20 @@ class UserController extends BaseController {
         return Redirect::to('user/register')->withErrors($validator);
     }
     
-    public function getLogin()
-    {
+    public function getLogin(){
         return View::make('login');
     }
     
-    public function postLogin()
-    {
-        if (!empty(Input::get('remember_me')))
-        {
+    public function postLogin(){
+        
+        if (!empty(Input::get('remember_me'))){
             $remember_auth = true;
-        } else {
+        }else{
             $remember_auth = false;
         }
 
-        if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password')), $remember_auth))
-        {
-            return Redirect::intended('user')->withMessage('Successfully logged in!');
+        if (Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password')), $remember_auth)){
+            return Redirect::intended('user')->withMessage('Sveicināts!');
         }
         
         return Redirect::to('user/login')->withErrors(array('loginfailed' => 'Login failed!'));
@@ -63,16 +60,12 @@ class UserController extends BaseController {
         return Redirect::to('/');
     }
     
-    // this handles requests to prefix itself, in this case /user
     public function getIndex()
     {
-        if (Auth::guest())
-        {
+        if (Auth::guest()){
             return Redirect::to('user/login');
         }
         
         return View::make('user');
     }
-  
-
 }

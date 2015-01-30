@@ -24,7 +24,7 @@
        
         
         <header class="container_24">
-            <h1>KING</h1>
+            <h1><a href="/">KING</a></h1>
             <nav class="grid_17">
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -41,8 +41,12 @@
                     <li><a href="#"><img src="{{ asset('site/img/icons/twitter.png') }}" alt="Twitter" /></a></li>
                     <li><a href="#"><img src="{{ asset('site/img/icons/youtube.png') }}" alt="Youtube" /></a></li>
                     <li><a href="#"><img src="{{ asset('site/img/icons/flickr.png') }}" alt="Flickr" /></a></li>
-                    <li><a href="user/login"><button id="login">Log in</button></a></li>
-                    <li><a href="user/register"><button>Register</button></a></li>
+                    @if ( Auth::guest() )
+                    <li><a href="/user/login"><button>Log in</button></a></li>
+                    <li><a href="/user/register"><button>Register</button></a></li>
+                    @else
+                    <li><a href="/user/logout"><button>Logout</button></a></li>
+                    @endif
                 </ul>
               
             </menu>
