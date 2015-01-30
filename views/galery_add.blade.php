@@ -3,71 +3,43 @@
 
 <div class="container_24 clearfix" id="registration">
     <h3>Register</h3>
-    {{ Form::open(array('url' => 'user/register')) }}
+    {{ Form::open(array('files' => true)) }}
     <table>
     
-        @foreach($errors->get('fullname') as $message)
+        @foreach($errors->get('title') as $message)
         <tr><td colspan="3" id="error">{{ $message }}</td></tr>
         @endforeach
     
         <tr><td >
-        {{ Form::label('fullname', 'Tavs vārds') }}
+        {{ Form::label('title', 'Bildes nosaukums') }}
         </td><td>
-        {{ Form::text('fullname') }}
+        {{ Form::text('title') }}
         </td></tr>
         
-        @foreach($errors->get('username') as $message)
+        @foreach($errors->get('description') as $message)
         <tr><td colspan="3" id="error">{{ $message }}</td></tr>
         @endforeach
     
         <tr><td >
-        {{ Form::label('username', 'Tavs lietotājvārds') }}
+        {{ Form::label('description', 'Bildes apraksts') }}
         </td><td>
-        {{ Form::text('username') }}
+        {{ Form::text('description') }}
         </td></tr>
         
-        @foreach($errors->get('igname') as $message)
-        <tr><td colspan="3" id="error">{{ $message }}</td></tr>
-        @endforeach
-    
-        <tr><td >
-        {{ Form::label('igname', 'Tavs servera segvārds') }}
-        </td><td>
-        {{ Form::text('igname') }}
-        </td></tr>
-    
-        @foreach($errors->get('email') as $message)
-        <tr><td colspan="3" id="error">{{ $message }}</td></tr>
+        @foreach($errors->get('image_galery') as $message)
+        <tr><td class="error">{{ $message }}</td></tr>
         @endforeach
         
-        <tr><td>
-        {{ Form::label('email', 'E-pasta adrese') }}
-        </td><td>
-        {{ Form::email('email') }}
-        </td></tr>
-    
-        @foreach($errors->get('password') as $message)
-        <tr><td colspan="3" id="error">{{ $message }}</td></tr>
-        @endforeach
-    
-        <tr><td>
-        {{ Form::label('password', 'Parole') }}
-        </td><td>
-        {{ Form::password('password') }}
+        <tr><td>{{ Form::label('image_galery', 'Attēls') }}</td><td>
+        {{ Form::file('image_galery') }}
         </td></tr>
     
         <tr><td>
-        {{ Form::label('password_confirmation', 'Parole atkārtoti') }}
-        </td><td>
-        {{ Form::password('password_confirmation') }}
-        </td></tr>
-    
-        <tr><td>
-        {{ Form::submit('Register') }}
+        {{ Form::submit('Post it!') }}
         </td></tr>
         
     </table>
+    
+    {{ Form::close() }}
 </div>
-
-{{ Form::close() }}
 @stop
