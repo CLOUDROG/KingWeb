@@ -28,9 +28,9 @@
             <nav class="grid_17">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="/blog">Blog</a></li>
                     <li><a href="#">Rules</a></li>
-                    <li><a href="#">Galery</a></li>
+                    <li><a href="/galery">Galery</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>

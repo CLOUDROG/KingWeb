@@ -8,6 +8,8 @@
 
 //Register&Login
 Route::controller('user', 'UserController');    //user/login
+Route::controller('galery', 'GaleryController');    //galery
+Route::controller('blog', 'BlogController');    //blog
 
 
 
