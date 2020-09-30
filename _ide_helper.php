@@ -125,6 +125,7 @@ namespace {
          *
          * @param \Illuminate\Support\ServiceProvider|string $provider
          * @return \Illuminate\Support\ServiceProvider|null 
+         * Illuminate\Support\ServiceProvider|null 
          * @static 
          */
         public static function getRegistered($provider){
